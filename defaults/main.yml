@@ -1,0 +1,12 @@
+# vim: tabstop=2 expandtab shiftwidth=2 softtabstop=2 smartindent nu
+---
+local_ping_checks: {}
+# exaple:
+#local_ping_checks:
+#  testhost:
+#    host: 8.8.8.8
+#    name: optional a name for the check
+#    warn: optional warn threshold values
+#    crit: optional crit threshold values
+#    packets: optional number of icmp packages to send
+...

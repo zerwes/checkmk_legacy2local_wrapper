@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# {{ ansible_managed }}
+
+# check_ping wrapper as a check_mk local check
+
+declare -i RET=0
+STATUS="OK"
+O=$(/usr/lib/nagios/plugins/check_ping -H {{ item.value.host }} -w {{ item.value.warn|default("50,10%") }} -c {{ item.value.crit|default("100,50%") }} -p {{ item.value.packets|default(3) }} 2>/dev/null)
+RET=$?
+STATUS=$(echo $O | awk '{print $2}')
+TXT=${O/|*/}
+PERF=$(echo ${O/*|/} | sed 's/ /|/g')
+
+echo "$RET {{ item.value.name|default("ping_"+item.key) }} $PERF $STATUS - $TXT"
