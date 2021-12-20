@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [[ -z "$1" ]]; then
+	echo "FATAL: missing hostname/ip to check"
+	echo "usage: $0 HOST"
+	exit 3
+fi
+
+declare -i RET=0
+STATUS="OK"
+O=$(/usr/lib/nagios/plugins/check_ping -H $1 -w 50,10% -c 100,50% -p 3 2>/dev/null)
+RET=$?
+STATUS=$(echo $O | awk '{print $2}')
+TXT=${O/|*/}
+PERF=$(echo ${O/*|/} | sed 's/ /|/g')
+
+echo "$RET ping_$1 $PERF $STATUS - $TXT"
