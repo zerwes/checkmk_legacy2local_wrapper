@@ -1,9 +1,10 @@
 #!/bin/bash
+# vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4 smartindent nu
 
 function help() {
-        echo ""
-        echo "Usage:"
-        echo " $(basename $0) [-w <secs>] [-c <secs>] [-W <size>] [-C <size>] [-i] -f <file>"
+    echo ""
+    echo "Usage:"
+    echo " $(basename $0) [-w <secs>] [-c <secs>] [-W <size>] [-C <size>] [-i] -f <file>"
 }
 
 FILE=""
@@ -15,30 +16,30 @@ arg_i=""
 
 
 while getopts h?if:w:c:W:C: opt; do
-        case $opt in
-                h|\?)
-                        help
-                        exit 0
-                        ;;
-                f)
-                        declare -r FILE=$OPTARG
-                        ;;
-                i)
-                        arg_i="-i"
-                        ;;
-		w)
-			arg_w="-w $OPTARG"
-			;;
-		c)
-			arg_c="-c $OPTARG"
-			;;
-		W)
-			arg_W="-W $OPTARG"
-			;;
-		C)
-			arg_C="-C $OPTARG"
-			;;
-        esac
+    case $opt in
+        h|\?)
+            help
+            exit 0
+            ;;
+        f)
+            declare -r FILE=$OPTARG
+            ;;
+        i)
+            arg_i="-i"
+             ;;
+        w)
+            arg_w="-w $OPTARG"
+            ;;
+        c)
+            arg_c="-c $OPTARG"
+            ;;
+        W)
+            arg_W="-W $OPTARG"
+            ;;
+        C)
+            arg_C="-C $OPTARG"
+            ;;
+    esac
 done
 
 declare -i RET=0
@@ -46,9 +47,9 @@ STATUS="OK"
 O=$(/usr/lib/nagios/plugins/check_file_age $arg_i $arg_w $arg_c $arg_W $arg_C -f "$FILE" 2>/dev/null)
 RET=$?
 if [ $RET -gt 0 ]; then
-	STATUS="WARNING"
+    STATUS="WARNING"
 fi
 if [ $RET -gt 1 ]; then
-	STATUS="CRITICAL"
+    STATUS="CRITICAL"
 fi
 echo "$RET FILE_AGE exitcode=$RET $STATUS - "${O/|*/}
