@@ -1,7 +1,7 @@
 ![stand with Ukraine](https://badgen.net/badge/stand%20with/UKRAINE/?color=0057B8&labelColor=FFD700)
 
 # checkmk_legacy2local_wrapper
-wrapper scripts in order to use legacy nagios checks as checkmk local checks
+**ansible playbook to distribute wrapper scripts in order to use legacy nagios checks as checkmk local checks**
 
 With [checkmk](https://docs.checkmk.com), you can still use good old nagios plugins via [mrpe](https://docs.checkmk.com/latest/en/agent_linux.html#mrpe).
 These checks will be executed synchronously and sequentially.
