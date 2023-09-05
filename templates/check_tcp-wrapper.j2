@@ -1,0 +1,17 @@
+#!/bin/bash
+# vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4 smartindent nu ft=bash
+
+declare -i RET=0
+STATUS="OK"
+O=$(/usr/lib/nagios/plugins/check_tcp {% for k, v in item.value.items() | list %}{% if k | length > 1 %}--{% else %}-{% endif %}{{ k }}{% if not v is boolean %} {{ v }}{% endif %} {% endfor %} 2>/dev/null)
+RET=$?
+if [ $RET -gt 0 ]; then
+    STATUS="WARNING"
+fi
+if [ $RET -gt 1 ]; then
+    STATUS="CRITICAL"
+fi
+
+PERF=$(echo $O | sed '/|/!d; s/.*|//g; s/ /|/g')
+[ -n "$PERF" ] && PERF="|$PERF"
+echo "$RET check_tcp_{{ item.key }} exitcode=${RET}${PERF} $STATUS - "${O/|*/}

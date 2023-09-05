@@ -6,4 +6,12 @@
     dest: "/usr/lib/check_mk_agent/local/check_ping_{{ item.key }}"
     mode: 0755
   with_dict: "{{ local_ping_checks }}"
+
+- name: generate check_mk local tcp checks
+  ansible.builtin.template:
+    src: check_tcp-wrapper.j2
+    dest: "/usr/lib/check_mk_agent/local/check_tcp_{{ item.key }}"
+    mode: 0755
+  with_dict: "{{ local_tcp_checks }}"
+
 ...
