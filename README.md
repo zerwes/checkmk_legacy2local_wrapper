@@ -1,4 +1,5 @@
 ![stand with Ukraine](https://badgen.net/badge/stand%20with/UKRAINE/?color=0057B8&labelColor=FFD700)
+[![ansible-lint](https://github.com/zerwes/checkmk_legacy2local_wrapper/actions/workflows/lint.yml/badge.svg)](https://github.com/zerwes/checkmk_legacy2local_wrapper/actions/workflows/lint.yml)
 
 # checkmk_legacy2local_wrapper
 **ansible playbook to distribute wrapper scripts in order to use legacy nagios checks as checkmk local checks**
