@@ -1,21 +1,21 @@
-# vim: tabstop=2 expandtab shiftwidth=2 softtabstop=2 smartindent nu
+#  vim: tabstop=2 expandtab shiftwidth=2 softtabstop=2 smartindent nu
 ---
 local_ping_checks: {}
-# exaple:
-#local_ping_checks:
-#  testhost:
-#    host: 8.8.8.8
-#    name: optional a name for the check
-#    warn: optional warn threshold values
-#    crit: optional crit threshold values
-#    packets: optional number of icmp packages to send
+#  exaple:
+# local_ping_checks:
+#   testhost:
+#     host: 8.8.8.8
+#     name: optional a name for the check
+#     warn: optional warn threshold values
+#     crit: optional crit threshold values
+#     packets: optional number of icmp packages to send
 
 local_tcp_checks: {}
-# example:
-#local_tcp_checks
-#  ldap01:  # the settings per check corespond to the check_tcp options and params
-#    hostname: ldap01  # will become --hostname ldap01
-#    p: 636            # will become -p 636
-#    timeout: 2
-#    ssl: true         # use this for options that do not have parameters
+#  example:
+# local_tcp_checks
+#   ldap01:  # the settings per check corespond to the check_tcp options and params
+#     hostname: ldap01  # will become --hostname ldap01
+#     p: 636            # will become -p 636
+#     timeout: 2
+#     ssl: true         # use this for options that do not have parameters
 ...
