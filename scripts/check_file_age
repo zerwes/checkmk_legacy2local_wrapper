@@ -52,4 +52,5 @@ fi
 if [ $RET -gt 1 ]; then
     STATUS="CRITICAL"
 fi
-echo "$RET FILE_AGE exitcode=$RET $STATUS - "${O/|*/}
+CHECKFILENAME=$(basename "$FILE")
+echo "$RET FILE_AGE-${CHECKFILENAME// /_} exitcode=$RET $STATUS - "${O/|*/}
